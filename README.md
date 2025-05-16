@@ -1,1 +1,1 @@
-# tsprepo
+# Practice Type Script
