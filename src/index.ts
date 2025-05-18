@@ -102,25 +102,84 @@
 //---------------------------
 /**Optional Chaining */
 //-------------------------------
-type Customer = {
-    //birthday: Date
-    birthday?: Date // Make birthday Optional
-};
+// type Customer = {
+//     //birthday: Date
+//     birthday?: Date // Make birthday Optional
+// };
 
-function getCustomer(id: number): Customer | null | undefined {
-    return id === 0 ? null : {birthday: new Date()};
-}
+// function getCustomer(id: number): Customer | null | undefined {
+//     return id === 0 ? null : {birthday: new Date()};
+// }
 
-let customer = getCustomer(1);
-/*
-// if (customer !== null && customer !== undefined)
-//     console.log(customer.birthday);
-*/
-/*/Optional Property Access Operator.*/
-console.log(customer?.birthday?.getFullYear);
-/*Optional element access operator*/
-//customers?.[0]
-//Optional Call
-let log: any = null;
-log?.('a');
-console.log(log);
+// let customer = getCustomer(1);
+// /*
+// // if (customer !== null && customer !== undefined)
+// //     console.log(customer.birthday);
+// */
+// /*/Optional Property Access Operator.*/
+// console.log(customer?.birthday?.getFullYear);
+// /*Optional element access operator*/
+// //customers?.[0]
+// //Optional Call
+// let log: any = null;
+// log?.('a');
+// console.log(log);
+//-------------------
+// let speed: number | null = null;
+// let ride = {
+//     //Falsy (Undefined, null, '', false , 0)
+//     // Nullish Coalesing Operator;
+//     speed: speed ?? 30
+// }
+// console.log(ride);
+//---------------------
+//**Type Assertions */
+//------------------
+// //let phone = document.getElementById('phone') as HTMLInputElement;
+// let phone = <HTMLInputElement> document.getElementById('phone');
+// //HTMLElement
+// //HTMLInputElement
+// phone.value
+//-----------------------------------------------
+//**Unknown Type */
+//------------------------------------
+// function render(document: unknown) {
+//     //Narrowing
+//     if(typeof document === 'string'){
+//     //if( document instanceof WordDocument)
+//         document.toUpperCase();
+//     }
+// }
+//-------------------------
+//**The Never Type */
+// //----------------------
+// function reject(message: string): never{
+//     throw new Error(message);
+// }
+// function processEvents(): never{
+//     while (true){
+//         //Read a message queue
+//     }
+// }
+// //processEvents();
+// reject('...');
+// console.log('Hello World!');
+type User= {
+        name: string,
+        age: number,
+        occupation?: string
+    }
+
+let users: User[] = [
+    {
+        name: 'John Smith',
+        age: 30,
+        occupation: 'Software Engineer'
+    },
+    {
+        name: 'Kate Muller',
+        age: 28
+    }
+];
+
+console.log(users);
