@@ -1,19 +1,33 @@
 class _Account{
-    readonly id: number;
-    owner: string;
-    balance: number;
-    nickname?: string;
+    //readonly id: number;
+    // owner: string;
+    // balance: number;
+     nickname?: string;
 
-    constructor(id: number, owner: string, balance: number){
-        this.id = id;
-        this.owner = owner;
-        this.balance = balance;
+     //**Access Modifier */
+    // constructor(id: number, owner: string, balance: number){
+    //     this.id = id;
+    //     this.owner = owner;
+    //     this.balance = balance;
+    // }
+
+
+    constructor(
+        public readonly id: number,
+        public owner: string, 
+        private _balance: number){
     }
 
     deposit(amount: number): void{
         if(amount <= 0)
             throw new Error('Invalid Amount');
-        this.balance += amount;
+        this._balance += amount;
+    }
+
+        withdraw(amount: number): void{
+        if(amount <= 0)
+            throw new Error('Invalid Amount');
+        this._balance -= amount;
     }
 }
 
@@ -23,4 +37,4 @@ _account.deposit(200);
 //Union -- Narrowing
 //console.log(typeof account);
 //console.log(account instanceof Account);
-console.log(_account);
+//console.log(_account);
