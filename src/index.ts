@@ -1,45 +1,21 @@
-class Account{
-    nickname?: string;
+class Ride {
+    private static _activeRides: number = 0;
+    start() {Ride._activeRides++;}
+    stop() {Ride._activeRides--;}
 
-    constructor(
-        public readonly id: number,
-        public owner: string, 
-        private _balance: number){
+     static get activeRides(){
+        return Ride._activeRides
     }
+}
 
-    deposit(amount: number): void{
-        if(amount <= 0)
-            throw new Error('Invalid Amount');
-        //Record a transaction
-        this._balance += amount;
-    }
+let ride1 = new Ride();
+ride1.start();
 
-    withdraw(amount: number): void{
-        if(amount <= 0)
-            throw new Error('Invalid Amount');
-        this._balance -= amount;
-    }
+let ride2 = new Ride();
+ride2.start();
 
-    // private calculateTax(): number{
-    //     return this.calculateTax = 0;
-    // }
+let ride3 = new Ride();
+ride3.start();
 
-    getBalance(): number{
-       return this._balance;
-    }
-}    
+console.log(Ride.activeRides);
 
-let account = new Account(112, "Saife", 234);
-account.nickname='azad';
-account.deposit(200);
-//Union -- Narrowing
-console.log(typeof account);
-console.log(account instanceof Account);
-console.log(account);
-account.deposit(250);
-//console.log(account.balance);
-account.owner='Saife Uddin'
-console.log(account);
-account.withdraw(25);
-console.log(account);
-console.log(account.getBalance);
