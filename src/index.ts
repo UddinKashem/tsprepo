@@ -1,21 +1,39 @@
-class Ride {
-    private static _activeRides: number = 0;
-    start() {Ride._activeRides++;}
-    stop() {Ride._activeRides--;}
+class Person {
+    constructor( public firstName: string, public lastName: string){}
 
-     static get activeRides(){
-        return Ride._activeRides
+    get fullName(){
+        return this.firstName + ' ' + this.lastName;
+    }
+
+    walk() {
+        console.log('Walking');
+    }
+    
+    talk(){
+        console.log('Talking');   
     }
 }
 
-let ride1 = new Ride();
-ride1.start();
+//Inheritance
+class Student extends Person {
+    constructor(public studentID: number, firstName: string, lastName: string){
+        super(firstName, lastName);
+    }
 
-let ride2 = new Ride();
-ride2.start();
+    takeTest(){
+        console.log('Taking Test.');
+    }
+}
 
-let ride3 = new Ride();
-ride3.start();
+//Creating Object for Inheritance Class
+let students = new Student(111, 'Saife', 'Kashem');
+console.log('Student Name: ' + students.fullName);
 
-console.log(Ride.activeRides);
+class Teacher extends Person{
+    override get fullName(){
+        return 'Professior ' + super.fullName;
+    }
+}
 
+let teacher = new Teacher('Josh', 'Smith');
+console.log('Teacher Full Name: ' + teacher.fullName);
