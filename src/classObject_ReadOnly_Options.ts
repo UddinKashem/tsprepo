@@ -1,4 +1,4 @@
-class Account{
+class _Account{
     readonly id: number;
     owner: string;
     balance: number;
@@ -17,10 +17,10 @@ class Account{
     }
 }
 
-let account = new Account(112, "Saife", 234);
-account.nickname='azad';
-account.deposit(200);
+let _account = new _Account(112, "Saife", 234);
+_account.nickname='azad';
+_account.deposit(200);
 //Union -- Narrowing
 //console.log(typeof account);
 //console.log(account instanceof Account);
-console.log(account);
+console.log(_account);
