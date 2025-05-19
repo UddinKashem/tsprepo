@@ -29,6 +29,16 @@ class _Account{
             throw new Error('Invalid Amount');
         this._balance -= amount;
     }
+//**Getter and Setter is Type Script */
+    get balance(): number{
+        return this._balance;
+    }
+    
+    set balance(value: number){
+        if(value < 0)
+            throw new Error('Invalid Value');
+        this._balance = value;
+    }
 }
 
 let _account = new _Account(112, "Saife", 234);
@@ -38,3 +48,39 @@ _account.deposit(200);
 //console.log(typeof account);
 //console.log(account instanceof Account);
 //console.log(_account);
+
+//**=========================
+// class SeatAssignment{
+    //A1, A2, ...
+    //Saife, Jhon, ....
+    //Index Signature Property
+//     [seatNumber: string]: string;
+// }
+
+// let seats = new SeatAssignment();
+// seats.A1 = 'Saife';
+// seats.A2 = 'Zeba';
+
+// console.log(seats);
+// ============================================ */
+// class Ride {
+//     private static _activeRides: number = 0;
+//     start() {Ride._activeRides++;}
+//     stop() {Ride._activeRides--;}
+
+//      static get activeRides(){
+//         return Ride._activeRides
+//     }
+// }
+
+// let ride1 = new Ride();
+// ride1.start();
+
+// let ride2 = new Ride();
+// ride2.start();
+
+// let ride3 = new Ride();
+// ride3.start();
+
+// console.log(Ride.activeRides);
+//====================================
