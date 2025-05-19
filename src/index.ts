@@ -26,14 +26,28 @@ class Student extends Person {
 }
 
 //Creating Object for Inheritance Class
-let students = new Student(111, 'Saife', 'Kashem');
-console.log('Student Name: ' + students.fullName);
-
 class Teacher extends Person{
     override get fullName(){
-        return 'Professior ' + super.fullName;
+        return 'Professor ' + super.fullName;
     }
 }
 
-let teacher = new Teacher('Josh', 'Smith');
-console.log('Teacher Full Name: ' + teacher.fullName);
+class Principal extends Person{
+    override get fullName(){
+        return 'Principal ' + super.fullName;
+    }
+}
+
+printNames([
+    new Student(113, 'John', 'Smith'),
+    new Teacher('Saife', 'Azad'),
+    new Principal('Abdul', 'Bari'),
+    new Student(114, 'John2', 'Smith2'),
+    new Teacher('Saife2', 'Azad2')
+])
+
+function printNames(people: Person[]){
+    for(let person of people){
+        console.log('Full Name: ' + person.fullName);
+    }
+}
