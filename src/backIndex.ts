@@ -164,13 +164,13 @@
 // //processEvents();
 // reject('...');
 // console.log('Hello World!');
-type User= {
+type User1= {
         name: string,
         age: number,
         occupation?: string
     }
 
-let users: User[] = [
+let users: User1[] = [
     {
         name: 'John Smith',
         age: 30,
