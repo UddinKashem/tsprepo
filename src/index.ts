@@ -1,53 +1,43 @@
-class Person {
-    constructor( public firstName: string, public lastName: string){}
+interface Product {
+    name: string;
+    price: number;
+}
 
-    get fullName(){
-        return this.firstName + ' ' + this.lastName;
-    }
+class Store<T> {
+   //private _objects: T[] = [];
+   protected _objects: T[] = [];
 
-    walk() {
-        console.log('Walking');
-    }
-    
-    talk(){
-        console.log('Talking');   
+    add(obj: T): void {
+        this._objects.push(obj);
+    } 
+
+    // T is a Product
+    // keyof T => 'name' | 'price'
+    find(property: keyof T, value: unknown): T | undefined {
+         return this._objects.find(obj => obj[property] === value);
+    } 
+
+}
+
+//Pass on Generic Type Parameter:
+class CompressibleStore<T> extends Store<T>{
+    compress(){}
+}
+
+let store = new CompressibleStore<Product>();
+store.compress();
+store.add
+
+//Restrict the Generic Type Parameter:
+class SearchableStore<T extends {name: string}> extends Store<T>{
+    finds(name: string): T | undefined {
+        return this._objects.find(obj => obj.name === name);
     }
 }
 
-//Inheritance
-class Student extends Person {
-    constructor(public studentID: number, firstName: string, lastName: string){
-        super(firstName, lastName);
-    }
-
-    takeTest(){
-        console.log('Taking Test.');
-    }
-}
-
-//Creating Object for Inheritance Class
-class Teacher extends Person{
-    override get fullName(){
-        return 'Professor ' + super.fullName;
-    }
-}
-
-class Principal extends Person{
-    override get fullName(){
-        return 'Principal ' + super.fullName;
-    }
-}
-
-printNames([
-    new Student(113, 'John', 'Smith'),
-    new Teacher('Saife', 'Azad'),
-    new Principal('Abdul', 'Bari'),
-    new Student(114, 'John2', 'Smith2'),
-    new Teacher('Saife2', 'Azad2')
-])
-
-function printNames(people: Person[]){
-    for(let person of people){
-        console.log('Full Name: ' + person.fullName);
-    }
-}
+//Fix or Terminate the Generic Type Parameter
+// class ProductStore extends Store<Product>{
+//     filterByCategory(category: string): Product[]{
+//         return [];
+//     }
+// }

@@ -184,3 +184,235 @@ _account.deposit(200);
 //         console.log('Full Name: ' + person.fullName);
 //     }
 // }
+//**=================================
+//Abstract Class and Abstract Method:
+//=========================================
+// // abstract class Shape{
+//     constructor(public color: string){}
+
+//     abstract render(): void;
+// }
+
+// class Circle extends Shape {
+//     constructor(public radious: number, color: string){
+//         super(color);
+//     }
+
+//     override render(): void {
+//         console.log('Rendering a Circle.');    
+//     }
+// }
+// //Creating  object for Circle:
+// let circle = new Circle(5, 'Pink');
+// console.log(circle);
+
+// class Triangle extends Shape{
+//     constructor(public area: number, color: string){
+//         super(color);
+//     }
+
+//     override render(): void {
+//         console.log("Rendering Triangle.");
+        
+//     }
+// }
+// //Creating Object for Triangle:
+// let triangles = new Triangle(34, 'Purple');
+// triangles.render;
+// console.log(triangles); */
+//===================================
+//Interfaces: To Define the Shape of Objects
+//To Implements the methods of Interface-> Select Class Name -> CTRL + . 
+//===================================
+// interface Calerdar {
+//     name: string;
+//     addEvent(): void;
+//     removeEvent(): void;
+// }
+
+// interface CloudCalendar extends Calerdar{
+//     sysc(): void;
+// }
+
+// class GoogleCalendar implements Calerdar{
+    
+//     constructor(public name: string){}
+
+//     addEvent(): void {
+//         throw new Error("Method not implemented.");
+//     }
+//     removeEvent(): void {
+//         throw new Error("Method not implemented.");
+//     }
+
+// }
+
+// class CloudCalendarInvite implements CloudCalendar{
+
+//     constructor( public name: string){}
+
+//     sysc(): void {
+//         throw new Error("Method not implemented.");
+//     }
+    
+//     addEvent(): void {
+//         throw new Error("Method not implemented.");
+//     }
+//     removeEvent(): void {
+//         throw new Error("Method not implemented.");
+//     }
+
+// }
+//==================================================
+//Exercies of class, Interface, Type
+//=========================================
+/**Define a class called Logger that takes the name of a file in its constructor and provides
+a method for writing messages to that file. Don’t worry about the actual file I/O
+operations. Just define the class with the right members. */
+
+// class Logger {
+//     constructor(public fileName: string){}
+
+//     log(message: string){
+//         return 'Test ' + message;
+//     }
+// }
+// let logger = new Logger('Upload a file.');
+// console.log(logger);
+
+// /**Given the Person class below, create a getter for getting the full name of a person. */
+// class Person {
+//     constructor(public firstName: string, public lastName: string) {}
+
+//     get fullName(){
+//         return `${this.firstName} ${this.lastName}`;
+//     }
+// }
+
+// let person = new Person('FirstName', 'LastName');
+
+// console.log(person);
+
+// //**Create a new class called Employee that extends Person and adds a new property called salary. */
+
+// class Employee extends Person{
+//     constructor(
+//         firstName: string,
+//         lastName: string,
+//         public salary: number
+//     )
+//     {
+//         super(firstName, lastName);
+
+//     }
+// }
+// let employe = new Employee('Saife', 'Kashem', 2500);
+// console.log(employe);
+//=================================================
+//Generic Class
+// //=============================================
+// class KeyValuePair<K, V>{
+//     constructor(public key: K, public value: V){}
+// }
+
+// let pair = new KeyValuePair<string, string>('Fruits', 'apple');
+// console.log(pair);
+//=============================
+//Generic Method: 
+//=====================
+// class ArrayUtils{
+//     static wrapInArray<T>(value: T){
+//         return [value];
+//     }
+
+// }
+// let arrGen = ArrayUtils.wrapInArray([3, 4, 5,9]);
+// console.log(arrGen);
+//=============================
+//Generic Interface:
+//=============================
+//https://www.mysidte.com/user
+//https://www.mysite.com/product
+
+// interface Result<T>{
+//     data: T | null,
+//     error: string | null
+// }
+
+// function fetch<T>(url: string): Result<T>{
+//     return  { data: null, error: null };
+// }
+
+// interface User {
+//     username: string;
+// }
+
+// interface Product {
+//     title: string;
+// }
+
+// let result = fetch<User>('url');
+// result.data;
+// let result2 = fetch<Product>('url');
+// result2.error;
+//=========================================
+//Generic Constraints:
+//===========================================
+// interface Person{
+//     name: string;
+// }
+
+// class Person{
+//    constructor(public name: string) {}
+// }
+
+// class Customer extends Person{
+// }
+
+// function echo<T extends Person> (value: T): T {
+//     return value;
+// }
+// console.log(echo({name: 'a'}));
+// console.log(echo( new Person('abx')));
+// console.log(echo(new Customer('Cst')));
+// //echo({name: 'a'});
+//================================================
+//Extending Generic Class
+//================================================
+// interface Product {
+//     name: string;
+//     price: number;
+// }
+
+// class Store<T> {
+//    //private _objects: T[] = [];
+//    protected _objects: T[] = [];
+
+//     add(obj: T): void {
+//         this._objects.push(obj);
+//     } 
+// }
+
+// //Pass on Generic Type Parameter:
+// class CompressibleStore<T> extends Store<T>{
+//     compress(){}
+// }
+
+// let store = new CompressibleStore<Product>();
+// store.compress();
+// store.add
+
+// //Restrict the Generic Type Parameter:
+// class SearchableStore<T extends {name: string}> extends Store<T>{
+//     find(name: string): T | undefined {
+//         return this._objects.find(obj => obj.name === name);
+//     }
+// }
+
+// //Fix or Terminate the Generic Type Parameter
+// class ProductStore extends Store<Product>{
+//     filterByCategory(category: string): Product[]{
+//         return [];
+//     }
+// }
+
