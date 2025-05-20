@@ -11,6 +11,6 @@ type Optional<T> = {
     [K in keyof T]?: T[K];
 }
 
-type Nullable<T> ={
+type Nullable<T> = {
     [K in keyof T]: T[K] | null;
 }
