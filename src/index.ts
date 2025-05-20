@@ -1,12 +1,20 @@
-//Convert the function below to a generic function:
-function echo<T>(arg: T): T { return arg; }
-/*When compiling the following piece of code, we get an error saying ‘Property name does not exist on type T’.
-* How can we solve this problem?
-*/
-function printName<T extends {name: string}>(obj: T) {
-console.log(obj.name);
+
+//Decorator Factory
+type ComponentOptions = {
+    selector: string
 }
-/**
- * An Entity should have a unique identifier. The type of identifier, however, is dependenton the use case. In some cases, 
- * the ID might be a number, in other cases, it might be a string, GUID, etc. Represent the entity using a generic class.
- */
+function Component(options: ComponentOptions){
+    return (constructor : Function) => {
+        console.log('Component decorator Called');
+        constructor.prototype.options = options;
+        constructor.prototype.uniqueId = Date.now();
+        constructor.prototype.insertInDOM = () => {
+        console.log('Inserting the component in the DOM.');
+        }
+    }
+}
+
+@Component({ selector: '#my-profile'})
+class ProfileComponent{
+
+}
