@@ -415,4 +415,41 @@ operations. Just define the class with the right members. */
 //         return [];
 //     }
 // }
+//=======================
+//The Keyof Operator:
+//=======================
+// class Store<T> {
+//    //private _objects: T[] = [];
+//    protected _objects: T[] = [];
+
+//     add(obj: T): void {
+//         this._objects.push(obj);
+//     } 
+
+//     // T is a Product
+//     // keyof T => 'name' | 'price'
+//     find(property: keyof T, value: unknown): T | undefined {
+//          return this._objects.find(obj => obj[property] === value);
+//     } 
+
+// }
+//===============================================
+//Type Mapping:
+//=========================================
+// interface Product {
+//     name: string;
+//     price: number;
+// }
+
+// type ReadOnly<T> = {
+//     readonly [ K in keyof T]: T[K];
+// }
+
+// type Optional<T> = {
+//     [K in keyof T]?: T[K];
+// }
+
+// type Nullable<T> ={
+//     [K in keyof T]: T[K] | null;
+// }
 
