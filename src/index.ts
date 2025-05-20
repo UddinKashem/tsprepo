@@ -16,5 +16,4 @@ function Component(options: ComponentOptions){
 
 @Component({ selector: '#my-profile'})
 class ProfileComponent{
-
-}
+]
