@@ -1,19 +1,11 @@
-type WatchedParameter = {
-    methodName: string,
-    parameterIndex: number
-};
+import { Circle, Square } from "./shape";
+//import Store, { Format } from "./storage";
 
-const watchedParameter: WatchedParameter[] = [];
+let circle = new Circle(56);
+console.log("Area of Circle: " + circle.radious);
 
-function Watch(target: any, methodName: string, parameterIndex: number){
-    watchedParameter.push({
-        methodName,
-        parameterIndex
-    });
-}
+let square = new Square(54);
+console.log(square);
 
-class Vehicle {
-    move(@Watch speed: number){}
-}
-
-console.log(watchedParameter);
+// let store = new Store();
+// console.log(store);
