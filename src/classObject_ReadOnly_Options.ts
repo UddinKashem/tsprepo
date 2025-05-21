@@ -1,51 +1,51 @@
-class _Account{
+// class _Account{
     //readonly id: number;
     // owner: string;
     // balance: number;
-     nickname?: string;
+//      nickname?: string;
 
-     //**Access Modifier */
-    // constructor(id: number, owner: string, balance: number){
-    //     this.id = id;
-    //     this.owner = owner;
-    //     this.balance = balance;
-    // }
+//      //**Access Modifier */
+//     // constructor(id: number, owner: string, balance: number){
+//     //     this.id = id;
+//     //     this.owner = owner;
+//     //     this.balance = balance;
+//     // }
 
 
-    constructor(
-        public readonly id: number,
-        public owner: string, 
-        private _balance: number){
-    }
+//     constructor(
+//         public readonly id: number,
+//         public owner: string, 
+//         private _balance: number){
+//     }
 
-    deposit(amount: number): void{
-        if(amount <= 0)
-            throw new Error('Invalid Amount');
-        this._balance += amount;
-    }
+//     deposit(amount: number): void{
+//         if(amount <= 0)
+//             throw new Error('Invalid Amount');
+//         this._balance += amount;
+//     }
 
-        withdraw(amount: number): void{
-        if(amount <= 0)
-            throw new Error('Invalid Amount');
-        this._balance -= amount;
-    }
-//**Getter and Setter is Type Script */
-    get balance(): number{
-        return this._balance;
-    }
+//         withdraw(amount: number): void{
+//         if(amount <= 0)
+//             throw new Error('Invalid Amount');
+//         this._balance -= amount;
+//     }
+// //**Getter and Setter is Type Script */
+//     get balance(): number{
+//         return this._balance;
+//     }
     
-    set balance(value: number){
-        if(value < 0)
-            throw new Error('Invalid Value');
-        this._balance = value;
-    }
-}
+//     set balance(value: number){
+//         if(value < 0)
+//             throw new Error('Invalid Value');
+//         this._balance = value;
+//     }
+// }
 
-let _account = new _Account(112, "Saife", 234);
-_account.nickname='azad';
-_account.deposit(200);
-//Union -- Narrowing
-//console.log(typeof account);
+// let _account = new _Account(112, "Saife", 234);
+// _account.nickname='azad';
+// _account.deposit(200);
+// //Union -- Narrowing
+// //console.log(typeof account);
 //console.log(account instanceof Account);
 //console.log(_account);
 
@@ -508,7 +508,131 @@ operations. Just define the class with the right members. */
 //         }
 //     }
 // }
-
+//-------------------------
 // @Component({ selector: '#my-profile'})
 // class ProfileComponent{
 // ]
+//======================================
+//Decorator Composition:
+//==================
+// function Pipe(constructor: Function){
+//     console.log('Pipe Decorator Called.')
+//     constructor.prototype.pipe=true;
+// }
+
+// @Component({ selector: '#my-profile'})
+// @Pipe
+// class ProfileComponent{
+// }
+//==============================
+//Method Decorator:
+// //=============================
+// function Log(target: any, methodName: string, descriptor: PropertyDescriptor){
+//     const original = descriptor.value as Function;
+//     descriptor.value=function(...args: any){
+//         console.log('Before');
+//         original.call(this, ...args);
+//         console.log('After');     
+//     }
+// }  
+  
+
+// class Person{
+//     @Log
+//     say(message: string){
+//         console.log('Person Say' + message);    
+//     }
+// }   
+
+// let person = new Person();
+// person.say('Hello World!');
+//============================================
+//Accessor Decorator:
+// //===========================================
+// function Capitalize(target: any, methodName: string, descriptor: PropertyDescriptor ){
+//     const original = descriptor.get;
+//     descriptor.get = function(){
+//         const result = original?.call(this);
+//         return (typeof result === 'string') ? result.toUpperCase() : result;
+//     }
+// }
+// class Person{
+//     constructor(public firstname: string, public lastname: string){}
+
+//     @Capitalize
+//     get fullname(){
+//         //return null;
+//        //return 0;
+//         return `${this.firstname}  ${this.lastname}`;
+//     }
+// }
+
+// let person = new Person('saife', 'azad');
+// console.log(person.fullname);
+//====================================
+//Property Decorator:
+//====================================
+// function MinLength(length: number){
+//     return (target: any, propertyName: string) => {
+//         let value: string;
+//         const descriptor: PropertyDescriptor = {
+//             get () {return value},
+//             set(newValue: string){
+//                 if (newValue.length < length)
+//                     throw new Error(`${propertyName} should be ${length} characters long.`);
+//                 value = newValue;
+//             }
+//         }
+//         Object.defineProperty(target, propertyName, descriptor);
+//     }
+// }
+
+// class User {
+//     @MinLength(4)
+//     password: string;
+
+//     constructor(password: string){
+//         this.password = password;
+//     }
+// }
+
+// let user = new User('12345678');
+// console.log(user.password);
+//=====================================================
+//Parameter Decorator
+// //=====================================================
+// type WatchedParameter = {
+//     methodName: string,
+//     parameterIndex: number
+// };
+
+// const watchedParameter: WatchedParameter[] = [];
+
+// function Watch(target: any, methodName: string, parameterIndex: number){
+//     watchedParameter.push({
+//         methodName,
+//         parameterIndex
+//     });
+// }
+
+// class Vehicle {
+//     move(@Watch speed: number){}
+// }
+
+// console.log(watchedParameter);
+////=====================================
+//Create a decorator for adding a sauce to Pizza instances:
+//======================================================
+/**
+ * In the below example, all instances of the Pizza class should have a sauce property set
+to pesto.
+ */
+// function Sauce( sauce: string){
+//     return (constructor: Function) => {
+//         constructor.prototype.sauce = sauce;
+//     };
+// }
+
+// @Sauce('pesto')
+// class Pizza {}
+//===================================
