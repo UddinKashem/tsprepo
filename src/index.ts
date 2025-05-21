@@ -1,19 +1,19 @@
+type WatchedParameter = {
+    methodName: string,
+    parameterIndex: number
+};
 
-//Decorator Factory
-type ComponentOptions = {
-    selector: string
-}
-function Component(options: ComponentOptions){
-    return (constructor : Function) => {
-        console.log('Component decorator Called');
-        constructor.prototype.options = options;
-        constructor.prototype.uniqueId = Date.now();
-        constructor.prototype.insertInDOM = () => {
-        console.log('Inserting the component in the DOM.');
-        }
-    }
+const watchedParameter: WatchedParameter[] = [];
+
+function Watch(target: any, methodName: string, parameterIndex: number){
+    watchedParameter.push({
+        methodName,
+        parameterIndex
+    });
 }
 
-@Component({ selector: '#my-profile'})
-class ProfileComponent{
-]
+class Vehicle {
+    move(@Watch speed: number){}
+}
+
+console.log(watchedParameter);
