@@ -1,6 +1,6 @@
 export default class Store {}
 
-export enum Format { Raw, Compressed}
+export enum Format { Raw, Compressed }
 
 // class Compressor {}
 // class Encriptor {}
