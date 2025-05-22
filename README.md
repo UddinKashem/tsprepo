@@ -43,3 +43,24 @@ import {Circle, Square} from './shape'
 npm i - lodash
 npm i --save-dev @types/lodash/npm i -D @types/lodash
 npm i chalk
+***======Creating React App with Typescript===========================
+npx create-react-app reminder-app --template typescript
+**=======Adding Bootstrap on React App -> navigate to React app on the terminal=======
+npm i bootstrap
+//==============
+run `npm fund` for details
+//To add all issues (including breaking changes), run:
+npm audit fix --force
+//Run `npm audit` for details
+//Open INDEX.TSX file and add:
+import 'bootstrap/dist/css/bootstrap.css';
+//=================================
+//********Creating a Component Title*************
+//================================
+Create Folder -> src -> components -> ReminderList.tsx
+//install Add.ins
+Reactjs code snippets
+rsf ->
+
+
+//##########################################################
