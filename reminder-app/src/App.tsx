@@ -9,7 +9,6 @@ import NewReminder from './components/newReminder';
 function App() {
   const [reminders, setReminders] = useState<Reminder[]>([]);
 
-  //const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     loadReminders();
   }, []);
@@ -21,11 +20,18 @@ function App() {
 
   const removeReminder = (id: number) => {
    setReminders(reminders.filter(reminder => reminder.id !== id));
+   console.log(id);
   };
+
+  const addReminder = async (tittle: string) => {
+    const newReminder = await reminderService.addReminder(tittle);
+    //setReminders([newReminder, ...reminders]);
+    console.log(tittle);
+  }
 
   return (
     <div className="App">
-      <NewReminder />
+      <NewReminder onAddReminder={addReminder} />
       <ReminderList items={reminders} onRemoveReminder={removeReminder}/>
     </div>
   );
