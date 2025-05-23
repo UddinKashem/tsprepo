@@ -10,3 +10,9 @@ npm i -D ts-node
 **Then in the terminal to execute TypeScript:
 npm start 
 =============================================
+***//npm setup globally by the command below:
+npm i -g npm@10.9.2/
+npm i -g ts-node
+***To Execute TypeScript:
+ts-node index.ts
+==============================================
