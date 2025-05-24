@@ -7,7 +7,7 @@ const app = express();
 //app.use('/reminders', remindersRouter);
 
 app.get('/', (req, res) => {
-    res.send('Hello WOrld, I am learning TypeScript. I Love Zeba since 2018. She is my soulmate.');
+    res.send('Hello World!!');
 })
 
 app.listen(8000, () => console.log('Server started--->>>...'));
