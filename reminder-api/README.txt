@@ -16,3 +16,11 @@ npm i -g ts-node
 ***To Execute TypeScript:
 ts-node index.ts
 ==============================================
+***Setup an Express Project:
+=============================
+npm i express
+----------------------
+npm i -D typescript @types/node @types/express
+----------------------
+tsc --init
+---------------------
